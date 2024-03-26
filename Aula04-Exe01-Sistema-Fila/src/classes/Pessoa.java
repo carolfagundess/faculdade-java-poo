@@ -1,4 +1,3 @@
-
 package classes;
 
 import java.time.LocalDate;
@@ -8,12 +7,17 @@ import java.time.LocalDate;
  * @author Carolina Fagundes
  */
 public class Pessoa {
+
     private String nome;
     private String email;
     private String telefone;
     private LocalDate dataNascimento;
-    
-    public Pessoa(){
+
+    public Pessoa() {
+    }
+
+    public Pessoa(String nome) {
+        this.nome = nome;
     }
 
     public Pessoa(String nome, String email, String telefone, LocalDate dataNascimento) {
@@ -59,6 +63,5 @@ public class Pessoa {
     public String toString() {
         return "Pessoa{" + "nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", dataNascimento=" + dataNascimento + '}';
     }
-    
-    
+
 }
