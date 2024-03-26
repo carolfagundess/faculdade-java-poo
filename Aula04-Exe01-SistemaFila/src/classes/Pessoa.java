@@ -1,13 +1,17 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package classes;
 
 import java.time.LocalDate;
 
 /**
  *
- * @author Carolina Fagundes
+ * @author carol
  */
 public class Pessoa {
-
+    
     private String nome;
     private String email;
     private String telefone;
@@ -63,5 +67,4 @@ public class Pessoa {
     public String toString() {
         return "Pessoa{" + "nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", dataNascimento=" + dataNascimento + '}';
     }
-
 }
