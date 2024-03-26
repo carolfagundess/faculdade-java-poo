@@ -44,7 +44,7 @@ public class Main {
         try {
             return scann.nextInt();
         } catch (Exception e) {
-            System.out.println("Opção inválida. Por favor, insira um número.");
+            System.out.println("Opcao invalida. Por favor, insira um numero.");
             scann.nextLine(); // Limpa o buffer do scanner
             return lerOpcao(); // Repete a leitura da opção
         }
@@ -52,10 +52,14 @@ public class Main {
 
     public static void executarOpcao(int opcao) {
         switch (opcao) {
-            case 1 -> adicionarPessoa();
-            case 2 -> removerPessoa();
-            case 3 -> exibirPessoas();
-            case 4 -> exibirInformacoes();
+            case 1 ->
+                adicionarPessoa();
+            case 2 ->
+                removerPessoa();
+            case 3 ->
+                exibirPessoas();
+            case 4 ->
+                exibirInformacoes();
             case 5 -> {
             }
             default -> {
@@ -76,9 +80,24 @@ public class Main {
         String email = scann.nextLine();
         System.out.print("Informar um telefone: ");
         String telefone = scann.nextLine();
-        System.out.print("Informe a data de nascimento (dd/MM/yyyy): ");
-        String dataFornecida = scann.next();
-        LocalDate dataConvertida = converterDataNascimento(dataFornecida);
+
+        //testando se a data fornecida é valida
+        LocalDate dataConvertida = null;
+        boolean dataValida = false;
+        do {
+            try {
+                System.out.print("Informe a data de nascimento (dd/MM/yyyy): ");
+                String dataFornecida = scann.next();
+                dataConvertida = converterDataNascimento(dataFornecida);
+                //caso for valida, passa a ser true e sai do loop
+                dataValida = true;
+                //caso de um exception, informa o erro e limpa o buffer pra tentar novamente
+            } catch (Exception e) {
+                System.out.println("Data inválida. Por favor, tente novamente.");
+                scann.nextLine(); // Limpar o buffer do scanner
+            }
+        } while (!dataValida);
+
         listaPessoas.add(new Pessoa(nome, email, telefone, dataConvertida));
         System.out.println("Pessoa adicionada com sucesso!");
         System.out.println("--------------------------");
@@ -97,7 +116,7 @@ public class Main {
         if (retornarIndicePorNome(pessoaBuscada) != -1) {
             listaPessoas.remove(retornarIndicePorNome(pessoaBuscada));
             System.out.println("Pessoa removida com sucesso");
-        }else{
+        } else {
             System.out.println("Não foi possivel remover");
         }
         System.out.println("-------------------------------");
@@ -140,7 +159,7 @@ public class Main {
         }
     }
 
-    public static int retornarIndicePorNome(Pessoa pessoaBuscada){
+    public static int retornarIndicePorNome(Pessoa pessoaBuscada) {
         for (Pessoa pessoa : listaPessoas) {
             if (pessoa.getNome().equals(pessoaBuscada.getNome())) {
                 return listaPessoas.indexOf(pessoa);
@@ -154,5 +173,4 @@ public class Main {
         LocalDate dataNascimento = LocalDate.parse(dataFornecida, formatter);
         return dataNascimento;
     }
-
 }
