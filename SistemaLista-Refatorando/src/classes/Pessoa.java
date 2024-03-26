@@ -11,7 +11,8 @@ import java.time.LocalDate;
  * @author carol
  */
 public class Pessoa {
-        private String nome;
+    
+    private String nome;
     private String email;
     private String telefone;
     private LocalDate dataNascimento;
@@ -19,8 +20,10 @@ public class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(String nome) {
+    public Pessoa(String nome, String email, String telefone) {
         this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
     }
 
     public Pessoa(String nome, String email, String telefone, LocalDate dataNascimento) {

@@ -1,16 +1,19 @@
-
 package view;
 
 import classes.ListaPessoa;
+import classes.Pessoa;
 import java.util.Scanner;
 
+/*import java.util.Scanner;*/
 /**
  *
  * @author carol
  */
-
 public class Main {
-    
+
+    static Scanner scann = new Scanner(System.in);
+    static ListaPessoa lista = new ListaPessoa();
+
     public static void main(String[] args) {
 
         System.out.println("------------------------------------------------");
@@ -18,6 +21,7 @@ public class Main {
         System.out.println();
 
         mostrarMenu();
+
         System.out.println("Programa encerrado");
 
     }
@@ -25,11 +29,12 @@ public class Main {
     public static void mostrarMenu() {
         System.out.println("-------<MENU DE OPCOES>---------");
         System.out.println("1 - Adicionar uma pessoa na lista;");
-        System.out.println("2 - Remover pessoa da lista;");
-        System.out.println("3 - Exibir todas as pessoas;");
-        System.out.println("4 - Exibir informacoes extras");
-        System.out.println("OU");
-        System.out.println("5 - Encerrar o programa");
+        System.out.println("2 - Imprimir lista");
+//        System.out.println("2 - Remover pessoa da lista;");
+//        System.out.println("3 - Exibir todas as pessoas;");
+//        System.out.println("4 - Exibir informacoes extras");
+//        System.out.println("OU");
+//        System.out.println("5 - Encerrar o programa");
         System.out.println("----------------------");
         System.out.print("Escolha uma opcao: ");
         int opcao = lerOpcao();
@@ -37,7 +42,6 @@ public class Main {
     }
 
     public static int lerOpcao() {
-        Scanner scann = new Scanner(System.in);
         try {
             return scann.nextInt();
         } catch (Exception e) {
@@ -47,22 +51,34 @@ public class Main {
         }
     }
 
+    public static void adicionarPessoa() {
+        System.out.println();
+        System.out.println("\n1 - ADICIONAR PESSOA");
+        scann.nextLine(); // Limpa o buffer do scanner
+        System.out.print("Informe um nome: ");
+        String nome = scann.nextLine();
+        System.out.print("Informar um email: ");
+        String email = scann.nextLine();
+        System.out.print("Informar um telefone: ");
+        String telefone = scann.nextLine();
+        Pessoa pessoa = new Pessoa(nome, email, telefone);
+        lista.adicionarPessoa(pessoa);
+        mostrarMenu();
+    }
+    
+    public static void mostrarLista(){
+        lista.imprimirLista();
+    }
+
     public static void executarOpcao(int opcao) {
-        ListaPessoa listaPessoa = new ListaPessoa();
         switch (opcao) {
             case 1 ->
-                listaPessoa.adicionarPessoa();
+                adicionarPessoa();
             case 2 ->
-                listaPessoa.removerPessoa();
-            case 3 ->
-                listaPessoa.exibirPessoas();
-            case 4 ->
-                listaPessoa.exibirInformacoes();
-            case 5 -> {
-            }
+                mostrarLista();
             default -> {
                 System.out.println("Opcao invalida. Por favor, escolha uma opcao valida.");
-                mostrarMenu();
+                mostrarMenu(); // Volta ao menu principal
             }
         }
     }
