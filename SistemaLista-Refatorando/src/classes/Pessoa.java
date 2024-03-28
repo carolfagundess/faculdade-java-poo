@@ -20,10 +20,8 @@ public class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(String nome, String email, String telefone) {
+    public Pessoa(String nome) {
         this.nome = nome;
-        this.email = email;
-        this.telefone = telefone;
     }
 
     public Pessoa(String nome, String email, String telefone, LocalDate dataNascimento) {

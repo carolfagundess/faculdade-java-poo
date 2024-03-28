@@ -7,7 +7,6 @@ package view;
 import classes.Pessoa;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -70,12 +69,34 @@ public class Main {
     }
 
     public static void adicionarPessoa() {
-        System.out.println();
+         System.out.println();
         System.out.println("\n1 - ADICIONAR PESSOA");
         scann.nextLine(); // Limpa o buffer do scanner
         System.out.print("Informe um nome: ");
         String nome = scann.nextLine();
-        fila.offer(new Pessoa(nome));
+        System.out.print("Informar um email: ");
+        String email = scann.nextLine();
+        System.out.print("Informar um telefone: ");
+        String telefone = scann.nextLine();
+
+        //testando se a data fornecida é valida
+        LocalDate dataConvertida = null;
+        boolean dataValida = false;
+        do {
+            try {
+                System.out.print("Informe a data de nascimento (dd/MM/yyyy): ");
+                String dataFornecida = scann.next();
+                dataConvertida = converterDataNascimento(dataFornecida);
+                //caso for valida, passa a ser true e sai do loop
+                dataValida = true;
+                //caso de um exception, informa o erro e limpa o buffer pra tentar novamente
+            } catch (Exception e) {
+                System.out.println("Data inválida. Por favor, tente novamente.");
+                scann.nextLine(); // Limpar o buffer do scanner
+            }
+        } while (!dataValida);
+
+        fila.offer(new Pessoa(nome, email, telefone, dataConvertida));
         System.out.println("Pessoa adicionada!");
         mostrarMenu();
     }
