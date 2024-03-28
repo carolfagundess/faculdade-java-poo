@@ -13,9 +13,10 @@ import java.util.LinkedList;
  */
 public class ListaPessoa<Pessoas> {
 
-    private final LinkedList<Pessoa> lista = new LinkedList<>();
+    private LinkedList<Pessoa> lista;
 
     public ListaPessoa() {
+        lista = new LinkedList<>();
     }
 
     public void adicionarPessoa(Pessoa pessoa) {

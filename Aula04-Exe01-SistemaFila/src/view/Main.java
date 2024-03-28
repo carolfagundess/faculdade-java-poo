@@ -107,7 +107,8 @@ public class Main {
     }
 
     public static void exibirFila() {
-        System.out.println("Pessoas da fila: " + fila);
+        System.out.println("Pessoas da fila: ");
+        System.out.println();
         for (Pessoa elemento : fila) {
             System.out.println(elemento);
         }
