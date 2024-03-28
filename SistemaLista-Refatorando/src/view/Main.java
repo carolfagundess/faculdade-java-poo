@@ -6,10 +6,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-/*import java.util.Scanner;*/
 /**
- *
- * @author carol
+ * @author Carolina dA Rosa Fagundes - refatorando o codigo do Limguagem de programação II
  */
 public class Main {
 
@@ -23,7 +21,7 @@ public class Main {
         System.out.println();
 
         mostrarMenu();
-
+        
         System.out.println("Programa encerrado");
 
     }
@@ -60,6 +58,11 @@ public class Main {
                 removerPessoa();
             case 3 ->
                 mostrarLista();
+            case 4 ->
+                exibirInformacoes();
+            case 5 ->{
+                
+            }
             default -> {
                 System.out.println("Opcao invalida. Por favor, escolha uma opcao valida.");
                 mostrarMenu(); // Volta ao menu principal
@@ -132,6 +135,7 @@ public class Main {
         lista.mostrarDadosPessoa(lista.retornarIndicePorNome(pessoaBuscada));
         mostrarMenu();
     }
+        
 
     public static LocalDate converterDataNascimento(String dataFornecida) { 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
