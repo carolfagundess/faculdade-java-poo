@@ -1,14 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package classes;
 
 /**
  *
  * @author herrmann
  */
-public class ItensMercado {
+public class ItensMercado implements Comparable<ItensMercado>{
 
     private String nome;
     private double quantidade;
@@ -46,7 +43,14 @@ public class ItensMercado {
 
     @Override
     public String toString() {
-        return "ItensMercado{" + "nome=" + nome + ", quantidade=" + quantidade + ", categoria=" + categoria.getCategoriaNome() + '}';
+        return "ItensMercado{" + "nome=" + nome + ", quantidade=" + quantidade + ", categoria=" + categoria.getCategoriaNome() + "}\n";
     }
+
+    @Override
+    public int compareTo(ItensMercado o) {
+       return nome.compareTo(o.nome);
+    }
+    
+    
 
 }

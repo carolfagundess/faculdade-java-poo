@@ -62,9 +62,10 @@ public class Pessoa {
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-
+    
     @Override
     public String toString() {
-        return "Pessoa{" + "nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", dataNascimento=" + dataNascimento + '}';
+        return "Pessoa - "
+                + "" + "nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", dataNascimento=" + dataNascimento + '}';
     }
 }
